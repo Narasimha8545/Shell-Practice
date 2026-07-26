@@ -4,4 +4,4 @@ number2=200
 TIMESTAMP=$(date)
 echo "Script executed at: $TIMESTAMP"
 sum=$((number1+number2))
-echo "The sum of $number1 and $number2 is: $sum"
+echo "The sum of number1 and number2 is: $sum"

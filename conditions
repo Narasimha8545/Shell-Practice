@@ -1,0 +1,7 @@
+number=$
+if [ $number -lt 22 ]
+then 
+    echo "The number is less than 21."
+else
+    echo "The number is 21 or greater."
+fi

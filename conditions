@@ -1,5 +1,5 @@
-number=$1
-if [ $number -lt 22 ]
+number=$
+if [ "$number" -lt 21 ]
 then 
     echo "The number is less than 21."
 else

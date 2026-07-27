@@ -1,4 +1,4 @@
-number=$
+number=$1
 if [ $number -lt 22 ]
 then 
     echo "The number is less than 21."

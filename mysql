@@ -1,0 +1,29 @@
+userid=$(id -u)
+if [$userid -ne 0]
+then
+     echo "error: please run the script as root user"
+     exit 1 #give other than 0 upto 127
+else 
+    echo "your are running the root user"
+    fi
+if [$? -ne 0]
+  then 
+    echo "mysql is not installed.. going to install it"
+      
+    dnf install mysql-server -y
+
+    if [$? -eq 0]
+    then
+    echo "mysql-server installed successfully"
+   else
+    echo "mysql-server installtion failed"
+    exit 1
+    fi
+    else 
+    echo "mysql is already installed.. nothing do it"
+    fi
+
+   
+     
+
+

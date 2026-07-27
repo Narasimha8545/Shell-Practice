@@ -1,7 +1,7 @@
 number=$
 if [ "$number" -lt 21 ]
 then 
-    echo "The number is less than 21."
+    echo "given number is $number and it is less than 21."
 else
-    echo "The number is 21 or greater."
+    echo "given number is $number and it is 21 or greater."
 fi

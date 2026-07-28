@@ -5,7 +5,7 @@ then
     exit 1 #give other than 0 upto 127
 else
     echo "your are running the root user"
-    
+    fi
     validate(){
         if ($1 -eq 0)
         then
@@ -39,4 +39,4 @@ else
     else
         echo "nginx is already installed.. nothing do it"
     fi
-    fi
+    

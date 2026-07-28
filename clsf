@@ -15,9 +15,9 @@ else
     validate(){
         if [$1 -eq 0]
         then
-            echo -e"$G installing $2 iskjh21 .... successful $N"
+            echo -e "$G installing $2 iskjh21 .... successful $N"
         else    
-            echo -e"$R installation $2 is .... failed $N"
+            echo -e "$R installation $2 is .... failed $N"
             exit 1
         fi 
     }

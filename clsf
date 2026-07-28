@@ -6,18 +6,18 @@ N=\e[0m #normal color
 userid=$(id -u)
 if [ $userid -ne 0 ]
 then 
-    echo -e "$R please run the script as root user $N"
+    echo -e " $R please run the script as root user $N "
     exit 1 #give other than 0 upto 127
 else
-    echo -e "$G your are running the root user $N"
+    echo -e " $G your are running the root user $N "
     fi
     # validate function takes the exist status, what command they tried to install
     validate(){
         if [$1 -eq 0]
         then
-            echo -e "$G installing $2 iskjh21 .... successful $N"
+            echo -e " $G installing $2 iskjh21 .... successful $N"
         else    
-            echo -e "$R installation $2 is .... failed $N"
+            echo -e " $R installation $2 is .... failed $N "
             exit 1
         fi 
     }
@@ -27,7 +27,7 @@ else
         echo "mysql is not installed.. going to install it"
         validate $? mysql-server
     else
-        echo -e "$B mysql is already installed.. nothing do it $N"
+        echo -e " $B mysql is already installed.. nothing do it $N "
     fi
     dnf list installed python3 -y
     if [ $? -ne 0 ]
@@ -35,7 +35,7 @@ else
         echo "python3 is not installed.. going to install it"
         validate $? python3
     else
-        echo -e "$B python3 is already installed.. nothing do it $N"
+        echo -e " $B python3 is already installed.. nothing do it $N "
     fi
     dnf list installed nginx -y
     if [ $? -ne 0 ]
@@ -43,5 +43,5 @@ else
         echo "nginx is not installed.. going to install it"
         validate $? nginx
     else
-        echo -e "$B nginx is already installed.. nothing do it $N"
+        echo -e " $B nginx is already installed.. nothing do it $N "
     fi

@@ -1,5 +1,5 @@
 userid=$1
-if ["$userid" -ne 0]
+if [$userid" -ne 0]
 then 
     echo "please run the script as root user"
     exit 1 #give other than 0 upto 127

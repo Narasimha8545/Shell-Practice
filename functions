@@ -6,7 +6,7 @@ then
 else
     echo "your are running the root user"
     validate(){
-        if ($1 -eq 0)
+        if [$1 -eq 0]
         then
             echo ("installing $2 is .... successful")
         else    
@@ -15,7 +15,7 @@ else
         fi 
     }
     dnf install mysql-server -y
-    if ($? -ne 0)
+    if [$? -ne 0]
     then
         echo ("mysql is not installed.. going to install it")
         validate $? mysql-server
@@ -23,7 +23,7 @@ else
         echo ("mysql is already installed.. nothing do it")
     fi
     dnf install python3 -y
-    if ($? -ne 0)
+    if [$? -ne 0]
     then 
         echo ("python3 is not installed.. going to install it")
         validate $? python3
@@ -31,7 +31,7 @@ else
         echo ("python3 is already installed.. nothing do it")
     fi
     dnf install nginx -y
-    if ($? -ne 0)
+    if [$? -ne 0]
     then
         echo ("nginx is not installed.. going to install it")
         validate $? nginx

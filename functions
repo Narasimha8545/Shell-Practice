@@ -8,7 +8,7 @@ else
     fi
     # validate function takes the exist status, what command they tried to install
     validate(){
-        if [$1 -eq 0]
+        if [ $1 -eq 0 ]
         then
             echo "installing $2 is .... successful"
         else    

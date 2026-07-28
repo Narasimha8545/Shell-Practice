@@ -5,7 +5,7 @@ then
     exit 1 #give other than 0 upto 127
 else
     echo "your are running the root user"
-    validate() {
+    validate(){
         if ($1 -eq 0)
         then
             echo ("installing $2 is .... successful")

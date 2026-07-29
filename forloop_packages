@@ -5,7 +5,7 @@ N="\e[0m" #normal color
 LOGS_FOLDER="/var/log/shellscript-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-PACKAGES=("mysql" "python3" "nginx")
+PACKAGES=("mysql" "python" "nginx" "httpd")
 
 mkdir -p $LOGS_FOLDER
 echo "script started excuting at: $(date)" |tee -a $LOG_FILE
@@ -19,6 +19,7 @@ else
     echo -e " $G your are running the root user $N " |tee -a $LOG_FILE
     fi
     # validate function takes the exist status, what command they tried to install
+
     validate(){
         if [ $1 -eq 0 ] 
         then
@@ -38,6 +39,6 @@ else
         dnf install $package -y &>>$LOG_FILE
         validate $? "$package"
     else
-        echo -e " $B $package is already installed.. nothing do it $N " |tee -a $LOG_FILE
-    fi
+        echo -e "$B $package is already installed.. nothing do it $N" |tee -a $LOG_FILE
+      fi
     done    

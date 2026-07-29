@@ -4,50 +4,50 @@ B="\e[34m"
 N="\e[0m" #normal color
 LOGS_FOLDER="/var/log/shellscript-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-FILE_NAME= "$LOGS_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE= "$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "script started excuting at: $(date)" |tee -a $FILE_NAME
+echo "script started excuting at: $(date)" |tee -a $LOG_FILE
 
 userid=$(id -u)
 if [ $userid -ne 0 ]
 then 
-    echo -e " $R please run the script as root user $N " |tee -a $FILE_NAME
+    echo -e " $R please run the script as root user $N " |tee -a $LOG_FILE
     exit 1 #give other than 0 upto 127
 else
-    echo -e " $G your are running the root user $N " |tee -a $FILE_NAME
+    echo -e " $G your are running the root user $N " |tee -a $LOG_FILE
     fi
     # validate function takes the exist status, what command they tried to install
     validate(){
         if [ $1 -eq 0 ] 
         then
-            echo -e " $G installing $2 is .... successful $N" |tee -a $FILE_NAME
+            echo -e " $G installing $2 is .... successful $N" |tee -a $LOG_FILE
         else    
-            echo -e " $R installation $2 is .... failed $N "|tee -a $FILE_NAME
+            echo -e " $R installation $2 is .... failed $N "|tee -a $LOG_FILE
             exit 1
         fi 
     }
-    dnf list installed mysql-server -y
+    dnf list installed mysql-server -y &>>$LOG_FILE
     if [ $? -ne 0 ]
     then
-        echo "mysql is not installed.. going to install it"|tee -a $FILE_NAME
+        echo "mysql is not installed.. going to install it"|tee -a $LOG_FILE
         validate $? mysql-server
     else
-        echo -e " $B mysql is already installed.. nothing do it $N "|tee -a $FILE_NAME
+        echo -e " $B mysql is already installed.. nothing do it $N "|tee -a $LOG_FILE
     fi
     dnf list installed python3 -y
     if [ $? -ne 0 ]
     then 
-        echo "python3 is not installed.. going to install it"|tee -a $FILE_NAME
+        echo "python3 is not installed.. going to install it"|tee -a $LOG_FILE
         validate $? python3
     else
-        echo -e " $B python3 is already installed.. nothing do it $N "|tee -a $FILE_NAME
+        echo -e " $B python3 is already installed.. nothing do it $N "|tee -a $LOG_FILE
     fi
     dnf list installed nginx -y
     if [ $? -ne 0 ]
     then
-        echo "nginx is not installed.. going to install it" |tee -a $FILE_NAME
+        echo "nginx is not installed.. going to install it" |tee -a $LOG_FILE
         validate $? nginx
     else
-        echo -e " $B nginx is already installed.. nothing do it $N "|tee -a $FILE_NAME
+        echo -e " $B nginx is already installed.. nothing do it $N "|tee -a $LOG_FILE
     fi

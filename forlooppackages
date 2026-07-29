@@ -2,6 +2,8 @@ R="\e[31m"
 G="\e[32m"
 B="\e[34m"
 N="\e[0m" #normal color
+userid=$(id -u)
+
 LOGS_FOLDER="/var/log/shellscript-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
@@ -10,7 +12,6 @@ PACKAGES=("mysql" "python" "nginx" "httpd")
 mkdir -p $LOGS_FOLDER
 echo "script started excuting at: $(date)" |tee -a $LOG_FILE
 
-userid=$(id -u)
 if [ $userid -ne 0 ]
 then 
     echo -e " $R please run the script as root user $N " |tee -a $LOG_FILE
@@ -20,7 +21,7 @@ else
     fi
     # validate function takes the exist status, what command they tried to install
 
-    validate(){
+    VALIDATE(){
         if [ $1 -eq 0 ] 
         then
             echo -e "$G installing $2 is .... successful $N" |tee -a $LOG_FILE
@@ -37,7 +38,7 @@ else
     then
         echo "$package is not installed.. going to install it" |tee -a $LOG_FILE
         dnf install $package -y &>>$LOG_FILE
-        validate $? "$package"
+        VALIDATE $? "$package"
     else
         echo -e "$B $package is already installed.. nothing do it $N" |tee -a $LOG_FILE
       fi

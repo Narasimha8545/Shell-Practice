@@ -27,7 +27,7 @@ else
             exit 1
         fi 
     }
-    dnf list  installed mysql-server -y &>>$LOG_FILE
+    dnf   install mysql-server -y &>>$LOG_FILE
     if [ $? -ne 0 ]
     then
         echo "mysql is not installed.. going to install it"|tee -a $LOG_FILE
@@ -35,7 +35,7 @@ else
     else
         echo -e " $B mysql is already installed.. nothing do it $N "|tee -a $LOG_FILE
     fi
-    dnf list installed python3 -y &>>$LOG_FILE
+    dnf  install python3 -y &>>$LOG_FILE
     if [ $? -ne 0 ]
     then 
         echo "python3 is not installed.. going to install it"|tee -a $LOG_FILE
@@ -43,7 +43,7 @@ else
     else
         echo -e " $B python3 is already installed.. nothing do it $N "|tee -a $LOG_FILE
     fi
-    dnf list installed nginx -y &>>$LOG_FILE
+    dnf  install nginx -y &>>$LOG_FILE
     if [ $? -ne 0 ]
     then
         echo "nginx is not installed.. going to install it" |tee -a $LOG_FILE
